@@ -52,11 +52,7 @@ module.exports = generator({
   typeCheckInterfaces,
   contentSanitizersForFunction,
   contentSanitizersForType,
-<<<<<<< HEAD
-  supportedTypes: ['Integer', 'int', 'double', 'Double', 'boolean', 'String', 'Matcher<View>'],
-=======
   supportedTypes: ['Integer', 'int', 'double', 'Double', 'boolean', 'String', 'Matcher<View>', 'ViewInteraction', 'ViewAction'],
->>>>>>> move DetoxAssertion to generated code
   renameTypesMap: {
     int: 'Integer', // TODO: add test
     double: 'Double'

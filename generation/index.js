@@ -46,5 +46,7 @@ const androidFiles = {
 		"../detox/src/android/espressoapi/DetoxMatcher.js",
 	"../detox/android/detox/src/main/java/com/wix/detox/espresso/DetoxAssertion.java": 
 		"../detox/src/android/espressoapi/DetoxAssertion.js",
+	"../detox/android/detox/src/main/java/com/wix/detox/espresso/EspressoDetox.java":
+		"../detox/src/android/espressoapi/EspressoDetox.js",
 };
 generateAndroidAdapters(androidFiles);

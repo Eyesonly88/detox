@@ -3,6 +3,8 @@ const matchers = require('./matcher');
 const DetoxActionApi = require('./espressoapi/DetoxAction');
 const ViewActionsApi = require('./espressoapi/ViewActions');
 const DetoxAssertionApi = require('./espressoapi/DetoxAssertion');
+const EspressoDetoxApi = require('./espressoapi/EspressoDetox');
+const DetoxMatcherApi = require('./espressoapi/DetoxMatcher');
 const Matcher = matchers.Matcher;
 const LabelMatcher = matchers.LabelMatcher;
 const IdMatcher = matchers.IdMatcher;
@@ -20,10 +22,6 @@ let invocationManager;
 function setInvocationManager(im) {
   invocationManager = im;
 }
-
-const DetoxMatcher = 'com.wix.detox.espresso.DetoxMatcher';
-const DetoxAssertion = 'com.wix.detox.espresso.DetoxAssertion';
-const EspressoDetox = 'com.wix.detox.espresso.EspressoDetox';
 
 class Action {}
 
@@ -114,7 +112,7 @@ class Interaction {
 class ActionInteraction extends Interaction {
   constructor(element, action) {
     super();
-    this._call = invoke.call(invoke.Android.Class(EspressoDetox), 'perform', element._call, action._call);
+    this._call = invoke.callDirectly(EspressoDetoxApi.perform(element._call, action._call));
     // TODO: move this.execute() here from the caller
   }
 }
@@ -187,7 +185,7 @@ class Element {
   atIndex(index) {
     if (typeof index !== 'number') throw new Error(`Element atIndex argument must be a number, got ${typeof index}`);
     const matcher = this._originalMatcher;
-    this._originalMatcher._call = invoke.call(invoke.Android.Class(DetoxMatcher), 'matcherForAtIndex', invoke.Android.Integer(index), matcher._call);
+    this._originalMatcher._call = invoke.callDirectly(DetoxMatcherApi.matcherForAtIndex(index, matcher._call));
     this._selectElementWithMatcher(this._originalMatcher);
     return this;
   }
