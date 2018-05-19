@@ -2,14 +2,16 @@ const t = require('babel-types');
 const generator = require('../core/generator');
 const { callGlobal } = require('../helpers');
 
-const { isNumber, isString, isBoolean, isOfClass } = require('../core/type-checks');
+const { isNumber, isString, isBoolean, isOfClass, isDefined } = require('../core/type-checks');
 
 const typeCheckInterfaces = {
   Integer: isNumber,
   Double: isNumber,
   String: isString,
   boolean: isBoolean,
-  'Matcher<View>': isOfClass('Matcher')
+  'Matcher<View>': isOfClass('Matcher'),
+  ViewInteraction: isDefined,
+  ViewAction: isDefined
 };
 
 const contentSanitizersForFunction = {
@@ -50,7 +52,11 @@ module.exports = generator({
   typeCheckInterfaces,
   contentSanitizersForFunction,
   contentSanitizersForType,
+<<<<<<< HEAD
   supportedTypes: ['Integer', 'int', 'double', 'Double', 'boolean', 'String', 'Matcher<View>'],
+=======
+  supportedTypes: ['Integer', 'int', 'double', 'Double', 'boolean', 'String', 'Matcher<View>', 'ViewInteraction', 'ViewAction'],
+>>>>>>> move DetoxAssertion to generated code
   renameTypesMap: {
     int: 'Integer', // TODO: add test
     double: 'Double'
