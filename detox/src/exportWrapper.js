@@ -1,5 +1,5 @@
 const platform = require('./platform');
-const iosExports = require('./ios/expect');
+const iosExports = require('./ios/expect'); // eslint-disable-line node/no-unpublished-require
 const androidExports = require('./android/expect');
 
 const exportMap = {

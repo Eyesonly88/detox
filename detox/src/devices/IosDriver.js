@@ -3,9 +3,9 @@ const fs = require('fs');
 const DeviceDriverBase = require('./DeviceDriverBase');
 const InvocationManager = require('../invoke').InvocationManager;
 const invoke = require('../invoke');
-const GREYConfigurationApi = require('./../ios/earlgreyapi/GREYConfiguration');
-const GREYConfigurationDetox = require('./../ios/earlgreyapi/GREYConfigurationDetox');
-const EarlyGrey = require('./../ios/earlgreyapi/EarlGrey');
+const GREYConfigurationApi = require('./../ios/earlgreyapi/GREYConfiguration'); // eslint-disable-line node/no-unpublished-require
+const GREYConfigurationDetox = require('./../ios/earlgreyapi/GREYConfigurationDetox'); // eslint-disable-line node/no-unpublished-require
+const EarlyGrey = require('./../ios/earlgreyapi/EarlGrey'); // eslint-disable-line node/no-unpublished-require
 
 class IosDriver extends DeviceDriverBase {
   constructor(client) {
